@@ -13,6 +13,7 @@
         <attr name="backText" format="string" />
         <attr name="backTextAppearance" format="reference" />
         <attr name="backTextColor" format="color" />
-        <attr name="backTextSize" format=""/>
+        <attr name="backTextSize" format="dimension" />
+        <attr name="backIcon" format="reference" />
     </declare-styleable>
 </resources>

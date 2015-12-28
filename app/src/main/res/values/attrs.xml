@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TitleToolbar">
+        <attr name="closeVisible">
+            <enum name="visible" value="1" />
+            <enum name="gone" value="0" />
+        </attr>
+        <attr name="closeText" format="string" />
+        <attr name="closeTextAppearance" format="reference" />
+        <attr name="closeTextColor" format="color" />
+        <attr name="closeTextSize" format="dimension" />
+
+        <attr name="backText" format="string" />
+        <attr name="backTextAppearance" format="reference" />
+        <attr name="backTextColor" format="color" />
+        <attr name="backTextSize" format=""/>
+    </declare-styleable>
+</resources>

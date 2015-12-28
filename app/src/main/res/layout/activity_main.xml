@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="me.kareluo.intensify.actionbar.MainActivity">
+
+    <me.kareluo.custom.toolbar.TitleToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:closeText="关闭"
+        app:closeTextColor="@android:color/white"
+        app:closeVisible="visible"
+        app:popupTheme="?attr/actionBarPopupTheme"
+        app:theme="?attr/actionBarTheme"
+        app:title="杏仁医生"
+        app:titleTextAppearance="@style/Title_Appearance" />
+
+
+</LinearLayout>

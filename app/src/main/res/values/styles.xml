@@ -19,4 +19,8 @@
         <item name="android:textColor">@android:color/white</item>
     </style>
 
+    <style name="Popup_Menu" parent="Base.Widget.AppCompat.Light.PopupMenu">
+        <item name="overlapAnchor">false</item>
+    </style>
+
 </resources>

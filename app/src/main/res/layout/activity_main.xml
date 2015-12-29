@@ -15,13 +15,13 @@
         app:backIcon="@drawable/bg_back"
         app:backText="返回"
         app:backTextColor="@android:color/white"
+        app:backVisible="true"
         app:closeText="关闭"
         app:closeTextColor="@android:color/white"
-        app:closeVisible="visible"
+        app:closeVisible="true"
         app:popupTheme="?attr/actionBarPopupTheme"
         app:theme="?attr/actionBarTheme"
         app:title="杏仁医生"
         app:titleTextAppearance="@style/Title_Appearance" />
-
 
 </LinearLayout>

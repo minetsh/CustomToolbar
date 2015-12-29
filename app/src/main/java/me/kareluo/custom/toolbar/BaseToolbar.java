@@ -44,4 +44,8 @@ public abstract class BaseToolbar extends Toolbar {
     public interface OnOptionItemClickListener {
         void onOptionItemClick(View v);
     }
+
+    public int dp2px(float dp) {
+        return Math.round(dp * getResources().getDisplayMetrics().density);
+    }
 }

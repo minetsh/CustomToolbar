@@ -2,9 +2,6 @@
 <resources>
     <declare-styleable name="TitleToolbar">
         <attr name="titleVisible" format="boolean" />
-        <attr name="titleText" format="string" />
-        <attr name="titleTextAppearance" format="reference" />
-        <attr name="titleTextColor" format="color" />
         <attr name="titleTextSize" format="dimension" />
 
         <attr name="closeVisible" format="boolean" />

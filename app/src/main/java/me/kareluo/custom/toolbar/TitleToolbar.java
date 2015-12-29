@@ -65,7 +65,6 @@ public class TitleToolbar extends BaseToolbar implements View.OnClickListener {
             mTitleTextView.setGravity(Gravity.CENTER);
 
             int titleTextAppearance = a.getResourceId(styleable.Toolbar_titleTextAppearance, 0);
-
             if (titleTextAppearance != 0) {
                 mTitleTextView.setTextAppearance(context, titleTextAppearance);
             }
@@ -73,6 +72,11 @@ public class TitleToolbar extends BaseToolbar implements View.OnClickListener {
             if (a.hasValue(styleable.Toolbar_titleTextColor)) {
                 int titleColor = a.getColor(styleable.Toolbar_titleTextColor, Color.WHITE);
                 mTitleTextView.setTextColor(titleColor);
+            }
+
+            if (typedArray.hasValue(R.styleable.TitleToolbar_titleTextSize)) {
+                mTitleTextView.setTextSize(
+                        typedArray.getDimensionPixelSize(R.styleable.TitleToolbar_backTextSize, 0));
             }
 
             setTitle(a.getText(styleable.Toolbar_title));

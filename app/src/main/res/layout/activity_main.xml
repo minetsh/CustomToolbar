@@ -22,6 +22,7 @@
         app:popupTheme="?attr/actionBarPopupTheme"
         app:theme="?attr/actionBarTheme"
         app:title="杏仁医生"
-        app:titleTextAppearance="@style/Title_Appearance" />
+        app:titleTextAppearance="@style/Title_Appearance"
+        app:titleTextColor="@android:color/white" />
 
 </LinearLayout>

@@ -14,6 +14,7 @@ import me.kareluo.custom.toolbar.BaseToolbar.OnOptionItemClickListener;
 public class MainActivity extends AppCompatActivity implements OnOptionItemClickListener {
 
     private TitleToolbar titleToolbar;
+    private ActionBar mActionBar;
     private boolean visible = true;
 
     @Override
@@ -26,9 +27,8 @@ public class MainActivity extends AppCompatActivity implements OnOptionItemClick
 
         setSupportActionBar(titleToolbar);
 
-        ActionBar actionBar = getSupportActionBar();
-
-        actionBar.setDisplayOptions(actionBar.getDisplayOptions() | ActionBar.DISPLAY_HOME_AS_UP);
+        mActionBar = getSupportActionBar();
+        mActionBar.setDisplayOptions(mActionBar.getDisplayOptions() | ActionBar.DISPLAY_HOME_AS_UP);
     }
 
     @Override

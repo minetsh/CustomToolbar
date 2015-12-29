@@ -16,7 +16,7 @@
         app:backText="返回"
         app:backTextAppearance="?attr/actionMenuTextAppearance"
         app:backTextColor="@android:color/white"
-        app:backVisible="true"
+        app:backVisible="false"
         app:closeText="关闭"
         app:closeTextAppearance="?attr/actionMenuTextAppearance"
         app:closeTextColor="@android:color/white"
@@ -28,8 +28,4 @@
         app:titleTextAppearance="@style/Title_Appearance"
         app:titleTextColor="@android:color/white"
         app:title_gravity="center" />
-
-
-
-
 </LinearLayout>

@@ -136,3 +136,33 @@
         app:titleTextColor="@android:color/white"
         app:title_gravity="center" />
 ```
+
+## 设置及菜单
+
+### 设置
+
+一般在代码中需要先从xml文件中获取Toolbar对象，通过`setSupportActionBar(Toolbar toolbar)``，然后再通过
+`getActionBar()`获取ActionBar对象使用。
+
+``` java
+titleToolbar = (TitleToolbar) findViewById(R.id.toolbar);
+titleToolbar.setOnOptionItemClickListener(this);
+
+setSupportActionBar(titleToolbar);
+
+mActionBar = getSupportActionBar();
+mActionBar.setDisplayOptions(mActionBar.getDisplayOptions() | ActionBar.DISPLAY_HOME_AS_UP);
+```
+
+### 菜单
+
+TitleToolbar是继承自Toolbar，所以完全可以当做Toolbar使用，将其通过`setSupportActionBar()`设置都，可以重写
+`onCreateOptionsMenu(Menu menu)`和`onOptionsItemSelected(MenuItem item)`完成菜单的一些操作。
+
+## 注意
+
+使用Toolbar代替ActionBar时，需要使用NoActionBar的主题，或者在主题中添加下面两句:
+``` xml
+<item name="windowActionBar">false</item>
+<item name="windowNoTitle">true</item>
+```

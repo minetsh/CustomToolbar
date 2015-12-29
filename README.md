@@ -15,8 +15,8 @@
 - titleVisible: 是否显示标题，默认显示
 
 示例：
-![标题图片](/screenshots/title.png)
 
+![标题图片](/screenshots/title.png)
 
 ``` xml
 <me.kareluo.custom.toolbar.TitleToolbar
@@ -44,6 +44,25 @@
 - subtitleTextColor: 副标题字体颜色，会覆盖subtitleTextAppearance中指定的颜色
 - subtitleTextSize: 副标题字体大小，会覆盖subtitleTextAppearance中指定的大小
 
+示例:
+
+![副标题](/screenshots/subtitle.png)
+
+``` xml
+<me.kareluo.custom.toolbar.TitleToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:subtitle="副标题"
+        app:subtitleTextAppearance="@style/Subtitle_Appearance"
+        app:subtitleVisible="true"
+        app:title="标题"
+        app:titleTextAppearance="@style/Title_Appearance"
+        app:titleTextColor="@android:color/white"
+        app:title_gravity="center" />
+```
+
 ### 3. 返回按钮
 
 返回按钮的可修改样式:
@@ -56,6 +75,29 @@
 - backIcon: 返回按钮的drawabkeLeft
 - backMarginRight: 返回按钮的marginRight
 
+示例:
+
+![返回按钮](/screenshots/backable.png)
+
+``` xml
+<me.kareluo.custom.toolbar.TitleToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:backIcon="@drawable/bg_back"
+        app:backText="返回"
+        app:backTextAppearance="?attr/actionMenuTextAppearance"
+        app:backVisible="true"
+        app:subtitle="副标题"
+        app:subtitleTextAppearance="@style/Subtitle_Appearance"
+        app:subtitleVisible="true"
+        app:title="标题"
+        app:titleTextAppearance="@style/Title_Appearance"
+        app:titleTextColor="@android:color/white"
+        app:title_gravity="center" />
+```
+
 ### 4. 关闭按钮
 
 在返回按钮的右边，用于带有WebView的Activity使用，返回按钮作为WebView的返回，关闭按钮作为整个Activity的关闭
@@ -67,3 +109,30 @@
 - closeTextColor: 关闭按钮的颜色，可覆盖closeTextAppearance中指定的颜色
 - closeTextSize: 关闭按钮的大小，可覆盖closeTextAppearance中指定的大小
 - closeVisible: 关闭按钮是否可见
+
+示例:
+
+![返回按钮](/screenshots/closeable.png)
+
+``` xml
+<me.kareluo.custom.toolbar.TitleToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:backIcon="@drawable/bg_back"
+        app:backText="返回"
+        app:backTextAppearance="?attr/actionMenuTextAppearance"
+        app:backTextColor="@android:color/white"
+        app:backVisible="true"
+        app:closeText="关闭"
+        app:closeTextAppearance="?attr/actionMenuTextAppearance"
+        app:closeVisible="true"
+        app:subtitle="副标题"
+        app:subtitleTextAppearance="@style/Subtitle_Appearance"
+        app:subtitleVisible="true"
+        app:title="标题"
+        app:titleTextAppearance="@style/Title_Appearance"
+        app:titleTextColor="@android:color/white"
+        app:title_gravity="center" />
+```

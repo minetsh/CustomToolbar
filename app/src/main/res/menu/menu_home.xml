@@ -4,14 +4,8 @@
     <group>
         <item
             android:id="@+id/menu_add"
-            android:icon="@mipmap/ic_launcher"
-            android:title="添加"
-            app:showAsAction="never" />
-        <item
-            android:id="@+id/menu_inc"
-            android:icon="@mipmap/ic_launcher"
-            android:title="添加"
-            app:showAsAction="never" />
+            android:title="保存"
+            app:showAsAction="always" />
 
     </group>
 

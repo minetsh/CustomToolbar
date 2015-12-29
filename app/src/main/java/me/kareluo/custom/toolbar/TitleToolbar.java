@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.TintTypedArray;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -21,9 +22,14 @@ import static android.support.v7.appcompat.R.styleable;
  */
 public class TitleToolbar extends BaseToolbar implements View.OnClickListener {
 
+    private LinearLayoutCompat mTitleLayout;
     private TextView mTitleTextView;
     private CharSequence mTitleText;
     private boolean mTitleVisible;
+
+    private TextView mSubtitleTextView;
+    private CharSequence mSubTitleText;
+    private boolean mSubTitleVisible;
 
     private TextView mCloseTextView;
     private CharSequence mCloseText;
@@ -58,7 +64,17 @@ public class TitleToolbar extends BaseToolbar implements View.OnClickListener {
                 styleable.Toolbar, defStyleAttr, 0);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.TitleToolbar);
 
-        if (!isChild(mTitleTextView)) {
+        if (!isChild(mTitleLayout)) {
+            mTitleLayout = new LinearLayoutCompat(context);
+            mTitleLayout.setOrientation(LinearLayoutCompat.VERTICAL);
+            mTitleLayout.setGravity(typedArray.getInt(
+                    R.styleable.TitleToolbar_title_gravity, Gravity.CENTER_VERTICAL));
+
+            addView(mTitleLayout, new LayoutParams(
+                    LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT, Gravity.CENTER));
+        }
+
+        if (!isChild(mTitleTextView, mTitleLayout)) {
             mTitleTextView = new TextView(context);
             mTitleTextView.setSingleLine();
             mTitleTextView.setEllipsize(TextUtils.TruncateAt.END);
@@ -82,10 +98,39 @@ public class TitleToolbar extends BaseToolbar implements View.OnClickListener {
             setTitle(a.getText(styleable.Toolbar_title));
             setTitleVisible(typedArray.getBoolean(R.styleable.TitleToolbar_titleVisible, true));
 
-            addView(mTitleTextView, new LayoutParams(
-                    LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, Gravity.CENTER));
+            mTitleLayout.addView(mTitleTextView,
+                    new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
         }
 
+        if (!isChild(mSubtitleTextView, mTitleLayout)) {
+            mSubtitleTextView = new TextView(context);
+            mSubtitleTextView.setSingleLine();
+            mSubtitleTextView.setEllipsize(TextUtils.TruncateAt.END);
+            mSubtitleTextView.setGravity(Gravity.CENTER);
+
+            int subTextAppearance = a.getResourceId(styleable.Toolbar_subtitleTextAppearance, 0);
+            if (subTextAppearance != 0) {
+                mSubtitleTextView.setTextAppearance(context, subTextAppearance);
+            }
+
+            if (a.hasValue(styleable.Toolbar_subtitleTextColor)) {
+                int subTitleColor = a.getColor(styleable.Toolbar_subtitleTextColor, Color.WHITE);
+                mSubtitleTextView.setTextColor(subTitleColor);
+            }
+
+            if (typedArray.hasValue(R.styleable.TitleToolbar_subtitleTextSize)) {
+                mSubtitleTextView.setTextSize(
+                        typedArray.getDimensionPixelSize(
+                                R.styleable.TitleToolbar_subtitleTextSize, 0));
+            }
+
+            setSubtitle(a.getText(styleable.Toolbar_subtitle));
+            setSubtitleVisible(
+                    typedArray.getBoolean(R.styleable.TitleToolbar_subtitleVisible, false));
+
+            mTitleLayout.addView(mSubtitleTextView,
+                    new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+        }
 
         if (!isChild(mBackTextView)) {
             mBackTextView = new TextView(context);
@@ -123,7 +168,7 @@ public class TitleToolbar extends BaseToolbar implements View.OnClickListener {
             mBackTextView.setOnClickListener(this);
 
             LayoutParams layoutParams = new LayoutParams(LayoutParams.WRAP_CONTENT,
-                    LayoutParams.WRAP_CONTENT, Gravity.LEFT | Gravity.CENTER_VERTICAL);
+                    LayoutParams.MATCH_PARENT, Gravity.LEFT | Gravity.CENTER_VERTICAL);
 
             layoutParams.rightMargin = typedArray.getDimensionPixelSize(
                     R.styleable.TitleToolbar_backMarginRight, dp2px(DEFAULT_BACK_MARGIN_RIGHT));
@@ -163,17 +208,12 @@ public class TitleToolbar extends BaseToolbar implements View.OnClickListener {
             mCloseTextView.setClickable(true);
             mCloseTextView.setOnClickListener(this);
 
-            addView(mCloseTextView, new LayoutParams(
-                    LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, Gravity.CENTER_VERTICAL));
+            addView(mCloseTextView, new LayoutParams(LayoutParams.WRAP_CONTENT,
+                    LayoutParams.MATCH_PARENT, Gravity.LEFT | Gravity.CENTER_VERTICAL));
         }
 
         typedArray.recycle();
         a.recycle();
-    }
-
-    @Override
-    public void setTitle(int resId) {
-        setTitle(getContext().getText(resId));
     }
 
     @Override
@@ -189,7 +229,15 @@ public class TitleToolbar extends BaseToolbar implements View.OnClickListener {
         return mTitleText;
     }
 
-    public void setTitleColor(int color) {
+    @Override
+    public void setTitleTextAppearance(Context context, int resId) {
+        if (mTitleTextView != null) {
+            mTitleTextView.setTextAppearance(context, resId);
+        }
+    }
+
+    @Override
+    public void setTitleTextColor(int color) {
         if (mTitleTextView != null) {
             mTitleTextView.setTextColor(color);
         }
@@ -202,6 +250,42 @@ public class TitleToolbar extends BaseToolbar implements View.OnClickListener {
 
     public boolean getTitleVisible() {
         return mTitleVisible;
+    }
+
+    @Override
+    public void setSubtitle(CharSequence subtitle) {
+        mSubTitleText = subtitle;
+        if (mSubtitleTextView != null) {
+            mSubtitleTextView.setText(subtitle);
+        }
+    }
+
+    @Override
+    public CharSequence getSubtitle() {
+        return mSubTitleText;
+    }
+
+    @Override
+    public void setSubtitleTextAppearance(Context context, int resId) {
+        if (mSubtitleTextView != null) {
+            mSubtitleTextView.setTextAppearance(context, resId);
+        }
+    }
+
+    @Override
+    public void setSubtitleTextColor(int color) {
+        if (mSubtitleTextView != null) {
+            mSubtitleTextView.setTextColor(color);
+        }
+    }
+
+    public void setSubtitleVisible(boolean visible) {
+        mSubTitleVisible = visible;
+        mSubtitleTextView.setVisibility(visible ? VISIBLE : GONE);
+    }
+
+    public boolean getSubtitleVisible() {
+        return mSubTitleVisible;
     }
 
     public void setCloseText(int resId) {

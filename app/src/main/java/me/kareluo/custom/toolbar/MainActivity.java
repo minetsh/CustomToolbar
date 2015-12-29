@@ -14,6 +14,7 @@ import me.kareluo.custom.toolbar.BaseToolbar.OnOptionItemClickListener;
 public class MainActivity extends AppCompatActivity implements OnOptionItemClickListener {
 
     private TitleToolbar titleToolbar;
+    private boolean visible = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,9 @@ public class MainActivity extends AppCompatActivity implements OnOptionItemClick
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
+                break;
+            case R.id.menu_add:
+                supportInvalidateOptionsMenu();
                 break;
         }
         return super.onOptionsItemSelected(item);

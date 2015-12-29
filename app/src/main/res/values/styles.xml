@@ -14,4 +14,9 @@
 
     </style>
 
+    <style name="Subtitle_Appearance" parent="Base.TextAppearance.AppCompat.Widget.ActionBar.Subtitle">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
 </resources>

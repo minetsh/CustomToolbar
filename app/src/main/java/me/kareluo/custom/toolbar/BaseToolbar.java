@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewParent;
 
 import static android.support.v7.appcompat.R.*;
 
@@ -35,6 +36,10 @@ public abstract class BaseToolbar extends Toolbar {
 
     public boolean isChild(View view) {
         return view != null && view.getParent() == this;
+    }
+
+    public boolean isChild(View view, ViewParent parent) {
+        return view != null && view.getParent() == parent;
     }
 
     public void setOnOptionItemClickListener(OnOptionItemClickListener listener) {

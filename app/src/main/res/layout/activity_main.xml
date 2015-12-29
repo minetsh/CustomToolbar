@@ -12,19 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
-        app:backText="返回"
-        app:backTextAppearance="?attr/actionMenuTextAppearance"
-        app:backVisible="true"
-        app:closeText="关闭"
-        app:closeTextColor="@android:color/white"
-        app:closeVisible="false"
-        app:popupTheme="@style/Popup_Menu"
-        app:subtitle="张鹏医生"
-        app:subtitleTextAppearance="@style/Subtitle_Appearance"
-        app:subtitleVisible="true"
-        app:theme="?attr/actionBarTheme"
-        app:title="杏仁医生"
+        app:title="标题"
         app:titleTextAppearance="@style/Title_Appearance"
-        app:titleTextColor="@android:color/white" />
+        app:titleTextColor="@android:color/white"
+        app:title_gravity="center" />
+
 
 </LinearLayout>

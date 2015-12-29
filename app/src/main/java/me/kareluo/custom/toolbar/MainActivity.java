@@ -28,9 +28,7 @@ public class MainActivity extends AppCompatActivity implements OnOptionItemClick
 
         ActionBar actionBar = getSupportActionBar();
 
-//        actionBar.setDisplayOptions(actionBar.getDisplayOptions() | ActionBar.DISPLAY_HOME_AS_UP);
-
-
+        actionBar.setDisplayOptions(actionBar.getDisplayOptions() | ActionBar.DISPLAY_HOME_AS_UP);
     }
 
     @Override

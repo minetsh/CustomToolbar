@@ -14,6 +14,22 @@
 - titleTextSize: 标题大小，会覆盖titleTextAppearance中指定的大小
 - titleVisible: 是否显示标题，默认显示
 
+示例：
+![标题图片](/screenshots/title.png)
+
+
+``` xml
+<me.kareluo.custom.toolbar.TitleToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:title="标题"
+        app:titleTextAppearance="@style/Title_Appearance"
+        app:titleTextColor="@android:color/white"
+        app:title_gravity="center" />
+```
+
 ### 2. 副标题
 
 副标题在标题的下面，默认与标题是左对齐
